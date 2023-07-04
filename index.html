@@ -41,6 +41,8 @@
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
+      max-width: 600px; /* Limitando a largura da seção de banners */
+      overflow: hidden;
     }
     .banner {
       flex-basis: 30%;
@@ -92,7 +94,7 @@
       <tr>
         <td align="center">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
-            <tr>
+            <tr class="banner-wrapper">
               <td align="center" width="30%" style="padding-right: 10px;">
                 <img src="https://i.imgur.com/aVi4okQ.jpg" alt="Banner 1" title="Banner 1" width="100%" style="display: block; border-radius: 50%;">
               </td>
