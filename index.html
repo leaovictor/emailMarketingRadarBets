@@ -1,630 +1,177 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:v="urn:schemas-microsoft-com:vml"
-  xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <meta charset="utf-8" />
-    <!-- utf-8 works for most cases -->
-    <meta name="viewport" content="width=device-width" />
-    <!-- Forcing initial-scale shouldn't be necessary -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Use the latest (edge) version of IE rendering engine -->
-    <meta name="x-apple-disable-message-reformatting" />
-    <!-- Disable auto-scale in iOS 10 Mail entirely -->
-    <meta
-      name="format-detection"
-      content="telephone=no,address=no,email=no,date=no,url=no"
-    />
-    <!-- Tell iOS not to automatically link certain text strings. -->
-    <meta name="color-scheme" content="light" />
-    <meta name="supported-color-schemes" content="light" />
-    <title></title>
-    <!--   The title tag shows in email notifications, like Android 4.4. -->
-
-    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
-    <!--[if gte mso 9]>
-      <xml>
-        <o:OfficeDocumentSettings>
-          <o:AllowPNG />
-          <o:PixelsPerInch>96</o:PixelsPerInch>
-        </o:OfficeDocumentSettings>
-      </xml>
-    <![endif]-->
-
-    <!-- Web Font / @font-face : BEGIN -->
-    <!-- NOTE: If web fonts are not required, lines 23 - 41 can be safely removed. -->
-
-    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
-    <!--[if mso]>
-      <style>
-        * {
-          font-family: sans-serif !important;
-        }
-      </style>
-    <![endif]-->
-
-    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
-    <!--[if !mso]><!-->
-    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
-    <!--<![endif]-->
-
-    <!-- Web Font / @font-face : END -->
-
-    <!-- CSS Reset : BEGIN -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-      /* What it does: Tells the email client that only light styles are provided but the client can transform them to dark.
-  A duplicate of meta color-scheme meta tag above. */
-      :root {
-        color-scheme: light;
-        supported-color-schemes: light;
-      }
-
-      /* What it does: Remove spaces around the email design added by some email clients. */
-      /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
-      html,
-      body {
-        margin: 0 auto !important;
-        padding: 0 !important;
-        height: 100% !important;
-        width: 100% !important;
-      }
-
-      /* What it does: Stops email clients resizing small text. */
-      * {
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-      }
-
-      /* What it does: Centers email on Android 4.4 */
-      div[style*="margin: 16px 0"] {
-        margin: 0 !important;
-      }
-
-      /* What it does: forces Samsung Android mail clients to use the entire viewport */
-      #MessageViewBody,
-      #MessageWebViewDiv {
-        width: 100% !important;
-      }
-
-      /* What it does: Stops Outlook from adding extra spacing to tables. */
-      table,
-      td {
-        mso-table-lspace: 0pt !important;
-        mso-table-rspace: 0pt !important;
-      }
-
-      /* What it does: Fixes webkit padding issue. */
-      table {
-        border-spacing: 0 !important;
-        border-collapse: collapse !important;
-        table-layout: fixed !important;
-        margin: 0 auto !important;
-      }
-
-      /* What it does: Uses a better rendering method when resizing images in IE. */
-      img {
-        -ms-interpolation-mode: bicubic;
-      }
-
-      /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links
-  should be inline. */
-      a {
-        text-decoration: none;
-      }
-
-      /* What it does: A work-around for email clients meddling in triggered links. */
-      a[x-apple-data-detectors],
-    /* iOS */
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no" />
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
+  <title></title>
+  <!--[if gte mso 9]>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:AllowPNG />
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  <![endif]-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    :root {
+      color-scheme: light;
+      supported-color-schemes: light;
+    }
+    html,
+    body {
+      margin: 0 auto !important;
+      padding: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+    }
+    * {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+    div[style*="margin: 16px 0"] {
+      margin: 0 !important;
+    }
+    #MessageViewBody,
+    #MessageWebViewDiv {
+      width: 100% !important;
+    }
+    table,
+    td {
+      mso-table-lspace: 0pt !important;
+      mso-table-rspace: 0pt !important;
+    }
+    table {
+      border-spacing: 0 !important;
+      border-collapse: collapse !important;
+      table-layout: fixed !important;
+      margin: 0 auto !important;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+    }
+    a {
+      text-decoration: none;
+    }
+    a[x-apple-data-detectors],
     .unstyle-auto-detected-links a,
     .aBn {
-        border-bottom: 0 !important;
-        cursor: default !important;
-        color: inherit !important;
-        text-decoration: none !important;
-        font-size: inherit !important;
-        font-family: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
+      border-bottom: 0 !important;
+      cursor: default !important;
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+    }
+    .a6S {
+      display: none !important;
+      opacity: 0.01 !important;
+    }
+    .im {
+      color: inherit !important;
+    }
+    img.g-img + div {
+      display: none !important;
+    }
+    .button-td,
+    .button-a {
+      transition: all 100ms ease-in;
+    }
+    .button-td-primary:hover,
+    .button-a-primary:hover {
+      background: #006444 !important;
+      color: #ffffff;
+    }
+    @media screen and (max-width: 600px) {
+      .email-container p {
+        font-size: 17px !important;
       }
-
-      /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
-      .a6S {
-        display: none !important;
-        opacity: 0.01 !important;
-      }
-
-      /* What it does: Prevents Gmail from changing the text color in conversation threads. */
-      .im {
-        color: inherit !important;
-      }
-
-      /* If the above doesn't work, add a .g-img class to any image in question. */
-      img.g-img + div {
-        display: none !important;
-      }
-
-      /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89 */
-      /* Create one of these media queries for each additional viewport size you'd like to fix */
-
-      /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
-      @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-        u ~ div .email-container {
-          min-width: 320px !important;
-        }
-      }
-
-      /* iPhone 6, 6S, 7, 8, and X */
-      @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-        u ~ div .email-container {
-          min-width: 375px !important;
-        }
-      }
-
-      /* iPhone 6+, 7+, and 8+ */
-      @media only screen and (min-device-width: 414px) {
-        u ~ div .email-container {
-          min-width: 414px !important;
-        }
-      }
-    </style>
-    <!-- CSS Reset : END -->
-
-    <!-- Progressive Enhancements : BEGIN -->
-    <style>
-      /* What it does: Hover styles for buttons */
-      .button-td,
-      .button-a {
-        transition: all 100ms ease-in;
-      }
-
-      .button-td-primary:hover,
-      .button-a-primary:hover {
-        background: #006444 !important;
-        color: #ffffff;
-        /* border-color: #006444 !important; */
-      }
-
-      /* Media Queries */
-      @media screen and (max-width: 600px) {
-        /* What it does: Adjust typography on small screens to improve readability */
-        .email-container p {
-          font-size: 17px !important;
-        }
-      }
-    </style>
-    <!-- Progressive Enhancements : END -->
-  </head>
-  <!--
-	The email background color (#222222) is defined in three places:
-	1. body tag: for most email clients
-	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
-	3. mso conditional: For Windows 10 Mail
--->
-  <body
-    width="100%"
-    style="
-      margin: 0;
-      padding: 0 !important;
-      mso-line-height-rule: exactly;
-      background-color: #222222;
-    "
-  >
-    <center
-      role="article"
-      aria-roledescription="email"
-      lang="en"
-      style="width: 100%; background-color: #222222"
-    >
-      <!--[if mso | IE]>
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;">
-    <tr>
-    <td>
-    <![endif]-->
-
-      <!-- Visually Hidden Preheader Text : BEGIN -->
-      <div
-        style="max-height: 0; overflow: hidden; mso-hide: all"
-        aria-hidden="true"
-      >
-        Me marca como "não é spam" para que você fique por dentro das nossas novidades, promoções e bônus exclusivos diretamente no seu e-mail! Não fique de fora dessa oportunidade, apostador!
-      </div>
-      <!-- Visually Hidden Preheader Text : END -->
-
-      <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
-      <!-- Preview Text Spacing Hack : BEGIN -->
-      <div
-        style="
-          display: none;
-          font-size: 1px;
-          line-height: 1px;
-          max-height: 0px;
-          max-width: 0px;
-          opacity: 0;
-          overflow: hidden;
-          mso-hide: all;
-          font-family: sans-serif;
-        "
-      >
-        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
-      </div>
-      <!-- Preview Text Spacing Hack : END -->
-
-      <!--
-            Set the email width. Defined in two places:
-            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
-            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
-        -->
-      <div style="max-width: 600px; margin: 0 auto" class="email-container">
-        <!--[if mso]>
-            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
-            <tr>
-            <td>
-            <![endif]-->
-
-        <!-- Email Body : BEGIN -->
-        <table
-          align="center"
-          role="presentation"
-          cellspacing="0"
-          cellpadding="0"
-          border="0"
-          width="100%"
-          style="margin: auto"
-        >
-          <!-- Hero Image, Flush : BEGIN -->
-          <tr>
-            <td style="background-color: #ffffff">
-              <a href="https://rebrand.ly/botaoAposta"
-                ><img
-                  src="https://i.imgur.com/3U73yKyh.jpg"
-                  width="600"
-                  height="auto"
-                  border="0"
-                  style="
-                    width: 100%;
-                    max-width: 600px;
-                    height: auto;
-                    background: #000000;
-                    font-family: sans-serif;
-                    font-size: 15px;
-                    line-height: 15px;
-                    color: #555555;
-                    margin: auto;
-                    display: block;
-                  "
-                  class="g-img"
-              /></a>
-            </td>
-          </tr>
-          <!-- Hero Image, Flush : END -->
-
-          <!-- 1 Column Text + Button : BEGIN -->
-          <tr>
-            <td style="background-color: #ffffff">
-              <table
-                role="presentation"
-                cellspacing="0"
-                cellpadding="0"
-                border="0"
-                width="100%"
-              >
-                <tr>
-                  <td
-                    style="
-                      padding: 20px;
-                      font-family: sans-serif;
-                      font-size: 15px;
-                      line-height: 20px;
-                      color: #555555;
-                    "
-                  >
-                    <h1
-                      style="
-                        margin: 0 0 10px 0;
-                        font-family: 'Poppins', sans-serif;
-                        font-size: 25px;
-                        line-height: 30px;
-                        color: #333333;
-                        font-weight: 700;
-                      "
-                    >
-                      Faaaala apostador!
-                    </h1>
-                    <p style="margin: 0; font-family: 'Poppins', sans-serif">
-                      Descubra a emoção e as recompensas incríveis na Radar
-                      Bets! Explore jogos exclusivos como Mines e Aviator,
-                      desafie sua sorte e ganhe prêmios explosivos. Com
-                      promoções exclusivas e suporte excepcional, garantimos uma
-                      experiência inesquecível. Junte-se a nós e viva a emoção
-                      da aposta na Radar Bets!
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 0 20px">
-                    <!-- Button : BEGIN -->
-                    <table
-                      align="center"
-                      role="presentation"
-                      cellspacing="0"
-                      cellpadding="0"
-                      border="0"
-                      style="margin: auto"
-                    >
-                      <tr>
-                        <td
-                          class="button-td button-td-primary"
-                          style="border-radius: 10px; background: #006444"
-                        >
-                          <a
-                            class="button-a button-a-primary"
-                            href="https://rebrand.ly/radarCasino"
-                            style="
-                              background: #fdff08;
-                              font-family: 'Poppins', sans-serif;
-                              font-weight: 900;
-                              list-style: none;
-                              font-size: 15px;
-                              line-height: 15px;
-                              text-decoration: none;
-                              padding: 13px 17px;
-                              display: block;
-                              border-radius: 4px;
-                            "
-                            >Jogue agora!</a
-                          >
-                        </td>
-                      </tr>
-                    </table>
-                    <!-- Button : END -->
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style="
-                      padding: 20px;
-                      font-family: sans-serif;
-                      font-size: 15px;
-                      line-height: 20px;
-                      color: #555555;
-                    "
-                  >
-                    <h2
-                      style="
-                        margin: 0 0 10px 0;
-                        font-family: 'Poppins', sans-serif;
-                        font-size: 18px;
-                        line-height: 22px;
-                        color: #333333;
-                        font-weight: bold;
-                      "
-                    >
-                      Com a Radar Bets você tem vantagens exclusivas como:
-                    </h2>
-                    <ul
-                      style="
-                        padding: 0;
-                        margin: 0 0 10px 0;
-                        list-style-type: disc;
-                        font-family: 'Poppins', sans-serif;
-                      "
-                    >
-                      <li style="margin: 0 0 10px 30px" class="list-item-first">
-                        Depósitos e saques instantâneos diretamente no PIX
-                      </li>
-                      <li style="margin: 0 0 10px 30px">
-                        Os melhores jogos de cassino do mercado
-                      </li>
-                      <li style="margin: 0 0 0 30px" class="list-item-last">
-                        Melhores ODDs para apostas esportivas
-                      </li>
-                    </ul>
-                    <br /><br />
-                    
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <br /><br />
-          <!-- 1 Column Text + Button : END -->
-
-          <!-- 2 Even Columns : BEGIN -->
-          <tr>
-            <td style="padding: 0 10px 40px 10px; background-color: #ffffff">
-              <table
-                role="presentation"
-                border="0"
-                cellpadding="0"
-                cellspacing="0"
-                width="100%"
-              >
-                
-              </table>
-            </td>
-          </tr>
-          <!-- 2 Even Columns : END -->
-
-          <!-- Clear Spacer : BEGIN -->
-          <tr>
-            <td
-              aria-hidden="true"
-              height="40"
-              style="font-size: 0px; line-height: 0px"
-            >
-              &nbsp;
-            </td>
-          </tr>
-          <!-- Clear Spacer : END -->
-
-          <!-- 1 Column Text : BEGIN -->
-          <tr>
-            <td style="background-color: #ffffff">
-              <table
-                role="presentation"
-                cellspacing="0"
-                cellpadding="0"
-                border="0"
-                width="100%"
-              >
-                <tr>
-                  <td
-                    style="
-                      padding: 20px;
-                      font-family: sans-serif;
-                      font-size: 15px;
-                      line-height: 20px;
-                      color: #555555;
-                    "
-                  >
-                    <em
-                      >Nota: Jogue com responsabilidade. O jogo pode ser
-                      viciante e prejudicial se não for utilizado com moderação.
-                      Certifique-se de que está ciente dos riscos envolvidos e
-                      de que está apostando dentro dos limites que você
-                      estabeleceu para si mesmo. Se você ou alguém próximo
-                      estiver enfrentando problemas com o jogo, procure ajuda
-                      profissional.</em
-                    >
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <!-- 1 Column Text : END -->
-        </table>
-        <!-- Email Body : END -->
-
-        <!-- Email Footer : BEGIN -->
-        <table
-          align="center"
-          role="presentation"
-          cellspacing="0"
-          cellpadding="0"
-          border="0"
-          width="100%"
-          style="margin: auto"
-        >
-          <tr>
-            <td
-              style="
-                padding: 20px;
-                font-family: sans-serif;
-                font-size: 12px;
-                line-height: 15px;
-                text-align: center;
-                color: #ffffff;
-              "
-            >
-              <a href="https://email-marketing-radar-bets.vercel.app">
-                <webversion
-                  style="
-                    color: #ffffff;
-                    text-decoration: underline;
-                    font-weight: bold;
-                  "
-                  >Visualizar em seu navegador</webversion
-                >
-              </a>
-              <br /><br />
-              Radar Bets<br /><span class="unstyle-auto-detected-links"
-                >This website is operated by Titans Games N.V., registered in
-                Curaçao under the number 158870, with the address at
-                Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao. The
-                transactions are processed by TITANS EUROPE LTD registered with
-                the number 13743389, with head office at Kemp House 160 City
-                Road, London, United Kingdom. For the purpose of processing
-                payments via Paysafe Group including but not limited to Neteller
-                and Skrill, the transaction processing entity shall be Titans
-                Games N.V., registered in Curaçao under the number 158870, with
-                the address at Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.
-                We work to maintain a safe community where users can bet with
-                confidence. Therefore, only individuals who have the legal
-                capacity to enter into contracts (+18 years old) can engage in
-                transactions on the site.</span
-              >
-              <br /><br />
-              <a href="https://forms.gle/LCe3onUfewHJYV829">
-                <unsubscribe style="color: #ffffff; text-decoration: underline"
-                  >unsubscribe</unsubscribe
-                >
-              </a>
-            </td>
-          </tr>
-        </table>
-        <!-- Email Footer : END -->
-
-        <!--[if mso]>
-            </td>
-            </tr>
-            </table>
-            <![endif]-->
-      </div>
-
-      <!-- Full Bleed Background Section : BEGIN -->
-      <table
-        role="presentation"
-        cellspacing="0"
-        cellpadding="0"
-        border="0"
-        width="100%"
-        style="background-color: #000000"
-      >
+    }
+  </style>
+</head>
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;">
+  <center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color: #222222">
+    <div style="max-width: 600px; margin: 0 auto" class="email-container">
+      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
         <tr>
-          <td>
-            <div
-              align="center"
-              style="max-width: 600px; margin: auto"
-              class="email-container"
-            >
-              <!--[if mso]>
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center">
-                        <tr>
-                        <td>
-                        <![endif]-->
-              <table
-                role="presentation"
-                cellspacing="0"
-                cellpadding="0"
-                border="0"
-                width="100%"
-              >
-                <tr>
-                  <td
-                    style="
-                      padding: 20px;
-                      text-align: center;
-                      font-family: sans-serif;
-                      font-size: 15px;
-                      line-height: 20px;
-                      color: #ffffff;
-                    "
-                  >
-                    &copy; <em id="date"></em>myprogrammer
-                  </td>
-                </tr>
-              </table>
-              <!--[if mso]>
-                        </td>
-                        </tr>
-                        </table>
-                        <![endif]-->
-            </div>
+          <td style="background-color: #ffffff">
+            <a href="https://rebrand.ly/botaoAposta"><img src="https://i.imgur.com/3U73yKyh.jpg" width="600" height="auto" border="0" style="width: 100%; max-width: 600px; height: auto; background: #000000; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555; margin: auto; display: block;" class="g-img" /></a>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #ffffff">
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                  <h1 style="margin: 0 0 10px 0; font-family: 'Poppins', sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: 700;">Faaaala apostador!</h1>
+                  <p style="margin: 0; font-family: 'Poppins', sans-serif">Descubra a emoção e as recompensas incríveis na Radar Bets! Explore jogos exclusivos como Mines e Aviator, desafie sua sorte e ganhe prêmios. Com promoções exclusivas e suporte excepcional, garantimos uma experiência inesquecível. Junte-se a nós e viva a emoção da aposta na Radar Bets!</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 0 20px">
+                  <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto">
+                    <tr>
+                      <td class="button-td button-td-primary" style="border-radius: 10px; background: #006444">
+                        <a class="button-a button-a-primary" href="https://rebrand.ly/radarCasino" style="background: #fdff08; font-family: 'Poppins', sans-serif; font-weight: 900; list-style: none; font-size: 15px; line-height: 15px; text-decoration: none; padding: 13px 17px; display: block; border-radius: 4px;">Jogue agora!</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                  <h2 style="margin: 0 0 10px 0; font-family: 'Poppins', sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">Com a Radar Bets você tem vantagens exclusivas:</h2>
+                  <ul style="padding: 0; margin: 0 0 10px 0; list-style-type: disc; font-family: 'Poppins', sans-serif;">
+                    <li style="margin: 0 0 10px 30px" class="list-item-first">Depósitos e saques instantâneos diretamente no PIX</li>
+                    <li style="margin: 0 0 10px 30px">Os melhores jogos de cassino do mercado</li>
+                    <li style="margin: 0 0 0 30px" class="list-item-last">Melhores ODDs para apostas esportivas</li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0 10px 40px 10px; background-color: #ffffff">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+              
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="background-color: #ffffff">
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                  <em>Nota: Jogue com responsabilidade. O jogo pode ser viciante e prejudicial se não for utilizado com moderação. Certifique-se de que está ciente dos riscos envolvidos e de que está apostando dentro dos limites que você estabeleceu para si mesmo. Se você ou alguém próximo estiver enfrentando problemas com o jogo, procure ajuda profissional.</em>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>
-      <!-- Full Bleed Background Section : END -->
-
-      <!--[if mso | IE]>
-    </td>
-    </tr>
-    </table>
-    <![endif]-->
-    </center>
-  </body>
+      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto">
+        <tr>
+          <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #ffffff;">
+            <a href="https://email-marketing-radar-bets.vercel.app"><webversion style="color: #ffffff; text-decoration: underline; font-weight: bold;">Visualizar em seu navegador</webversion></a>
+            <br /><br />
+            Radar Bets<br /><span class="unstyle-auto-detected-links">This website is operated by Titans Games N.V., registered in Curaçao under the number 158870, with the address at Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao. The transactions are processed by TITANS EUROPE LTD registered with the number 13743389, with head office at Kemp House 160 City Road, London, United Kingdom. For the purpose of processing payments via Paysafe Group including but not limited to Neteller and Skrill, the transaction processing entity shall be Titans Games N.V., registered in Curaçao under the number 158870, with the address at Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao. We work to maintain a safe community where users can bet with confidence. Therefore, only individuals who have the legal capacity to enter into contracts (+18 years old) can engage in transactions on the site.</span>
+            <br /><br />
+            <a href="https://forms.gle/LCe3onUfewHJYV829"><unsubscribe style="color: #ffffff; text-decoration: underline;">Cancelar inscrição</unsubscribe></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </center>
+</body>
 </html>
